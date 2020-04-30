@@ -1,8 +1,8 @@
 # Adversarial-Reprogramming-of-Neural-Networks
 Implementation of paper Adversarial Reprogramming of Neural Networks - Ian Goodfellow et. al. - ICLR 2019
 
-#### Soumya Chatterjee 170070010@iitb.ac.in
-#### Yash Jain yash.jain3599@gmail.com
+#### Soumya Chatterjee 170070010@iitb.ac.in @soumyac1999
+#### Yash Jain yash.jain3599@gmail.com @jinga-lala
 
 
 ## 1 Introduction
@@ -45,6 +45,7 @@ We have implemented this with MNIST classification as the adverserial task.
 Note: This method is different from Transfer learning where we use weights trained on one dataset and train the top layers to use it for classification of some other dataset. Here we don’t change the weights of the Resnet model, rather we are modifying the input to the model.
 
 ![](https://github.com/jinga-lala/Adversarial-Reprogramming-of-Neural-Networks/blob/master/Figure_3.png)
+Figure1: Reprogramming the neural network
 
 ## 2.1 Implementation Detail
 
@@ -52,7 +53,9 @@ Note: This method is different from Transfer learning where we use weights train
 The adversarial program - say _W_ is to be learned of size _R^n_ × _n_ × 3 where _n_ is the ImageNet image width This
 program will be same for all images and not specific to a single image. Then we apply a mask so that we can
 accommodate the adversarial data.
-**_P_ = _tanh_ ( _W .* M_ )**
+
+**_P_ = _tanh_ ( _W &#183; M_ )**
+
 
 The mask M is such that it is all 1 except the central portion where it is 0.Also we use tanh function as it keeps
 the output between (-1,1), which is required for the ImageNet as input.Also we keep the adversarial data at centre
@@ -68,6 +71,7 @@ an input image X. The adversarial goal is thus to maximize the probability _P_ (
 problem is
 **_W_ = arg min <sub>_W_</sub>(− _logP_ ( _hg_ ( _yadv_ )| _Xadv_ ) + _λ_ || _W_ ||<sup>2</sup><sub>_F_</sub>
 **
+
 where _λ_ is a regulariser to avoid overfitting and function _hg_ is a hardcoded mapping between ImageNet labels and
 adversarial task labels.The cost of this computation is minimal and attacker needs only to store the program and
 add it to the data, leaving the majority of computation to the target network
