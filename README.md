@@ -69,8 +69,8 @@ The image _X'_ will go in the Central portion of P where it is masked off.
 Let _P_ ( _y_ | _X_ ) be the probability that an ImageNet classifier gives to ImageNet label y &epsilon; 1,... , 1000, given
 an input image X. The adversarial goal is thus to maximize the probability _P_ ( _hg_ ( _yadv_ )| _Xadv_ ).The optimization
 problem is
-**_W_ = arg min <sub>_W_</sub>(− _logP_ ( _hg_ ( _yadv_ )| _Xadv_ ) + _λ_ || _W_ ||<sup>2</sup><sub>_F_</sub>
-**
+
+**_W_ = arg min <sub>_W_</sub>(− _logP_ ( _hg_ ( _yadv_ )| _Xadv_ ) + _λ_ || _W_ ||<sup>2</sup><sub>_F_</sub>**
 
 where _λ_ is a regulariser to avoid overfitting and function _hg_ is a hardcoded mapping between ImageNet labels and
 adversarial task labels.The cost of this computation is minimal and attacker needs only to store the program and
